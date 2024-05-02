@@ -7,4 +7,9 @@ def greetings():
     return jsonify({"greeting": "Hello from Python App!"})
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True, port="3000")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', default=5000, type=int, help='Port to run the server on.')
+    args = parser.parse_args()
+    
+    app.run(debug=True, port=args.port)
